@@ -1,0 +1,105 @@
+{
+  "source_url": "https://raw.githubusercontent.com/hsivasub/Uber-Rider-Churn-Prediction/760192ed7ace0975bc273c8ef5ac596132439352/attributes.json",
+  "source_sha256": "8197ac13ee1313d71fcd771a62c0080ee451adf3624b968108ad3cb3d7bc0e66",
+  "quality": {
+    "source_rows": 50000,
+    "exact_duplicate_rows": 8,
+    "zero_early_trips_positive_avg_dist": 15334,
+    "zero_early_trips_upgraded_user": 5379
+  },
+  "analysis_rows": 49992,
+  "train_rows": 39993,
+  "test_rows": 9999,
+  "inactive_rate": 0.6337413986237798,
+  "last_observed_date": "2014-07-01",
+  "active_window_start": "2014-06-02",
+  "features": [
+    "trips_in_first_30_days",
+    "city",
+    "phone",
+    "signup_day"
+  ],
+  "tree_best_params": {
+    "model__max_depth": 8,
+    "model__min_samples_leaf": 200
+  },
+  "forest_best_params": {
+    "model__max_depth": 6,
+    "model__max_features": 0.8,
+    "model__min_samples_leaf": 100
+  },
+  "cv_roc_auc": {
+    "tree": 0.7571258234850381,
+    "forest": 0.7586883882535003
+  },
+  "test_scores": {
+    "Majority-rate baseline": {
+      "roc_auc": 0.5,
+      "average_precision": 0.6337633763376338,
+      "precision": 0.6337633763376338,
+      "recall": 1.0,
+      "f1": 0.7758325171400587,
+      "brier": 0.23210735990549777,
+      "confusion_matrix": [
+        [
+          0,
+          3662
+        ],
+        [
+          0,
+          6337
+        ]
+      ]
+    },
+    "Single decision tree": {
+      "roc_auc": 0.7557716089575437,
+      "average_precision": 0.8263924374189273,
+      "precision": 0.740146779016037,
+      "recall": 0.8593971910998895,
+      "f1": 0.7953267615918218,
+      "brier": 0.1881277124105384,
+      "confusion_matrix": [
+        [
+          1750,
+          1912
+        ],
+        [
+          891,
+          5446
+        ]
+      ]
+    },
+    "Random forest": {
+      "roc_auc": 0.7574258727039545,
+      "average_precision": 0.8307391404621152,
+      "precision": 0.7389302640487475,
+      "recall": 0.8611330282468045,
+      "f1": 0.795365107127241,
+      "brier": 0.18773201373786694,
+      "confusion_matrix": [
+        [
+          1734,
+          1928
+        ],
+        [
+          880,
+          5457
+        ]
+      ]
+    }
+  },
+  "forest_minus_tree_auc_ci95": [
+    0.00031277574055588734,
+    0.0032226053858816126
+  ],
+  "forest_permutation_importance_auc_drop": {
+    "city": 0.09141259619132805,
+    "trips_in_first_30_days": 0.0843033385971806,
+    "phone": 0.06634981311374506,
+    "signup_day": 0.004037857469680217
+  },
+  "library_versions": {
+    "pandas": "2.2.3",
+    "scikit_learn": "1.8.0"
+  }
+}
