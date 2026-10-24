@@ -1,0 +1,42 @@
+{
+  "source_commit": "367bac236a9b885a77751e6535911d116bae58dd",
+  "analysis_rows": 148767,
+  "train_rows": 111771,
+  "test_rows": 36996,
+  "train_completion_rate": 0.6195614246987143,
+  "test_completion_rate": 0.6216618012758136,
+  "unique_customer_share": 0.9920210799438047,
+  "random_forest": {
+    "best_parameters": {
+      "model__max_depth": 8,
+      "model__min_samples_leaf": 50
+    },
+    "cv_roc_auc": 0.49892008396864956,
+    "test_roc_auc": 0.49918308912685794,
+    "average_precision": 0.6184525765902757,
+    "precision": 0.6216618012758136,
+    "recall": 1.0,
+    "f1": 0.7666972247687307,
+    "brier": 0.23522586102229298,
+    "top_decile_lift": 0.9729805878751485,
+    "confusion_matrix": [[0, 13997], [0, 22999]]
+  },
+  "xgboost": {
+    "best_parameters": {
+      "model__learning_rate": 0.1,
+      "model__max_depth": 5
+    },
+    "cv_roc_auc": 0.49922535817197894,
+    "test_roc_auc": 0.49833690518049456,
+    "average_precision": 0.6177626774714757,
+    "precision": 0.6217547849156718,
+    "recall": 0.9986086351580503,
+    "f1": 0.7663585705228736,
+    "brier": 0.2360945776100414,
+    "top_decile_lift": 0.9699373063223664,
+    "confusion_matrix": [[25, 13972], [32, 22967]]
+  },
+  "xgboost_minus_random_forest_roc_auc": -0.0008461839463633769,
+  "paired_bootstrap_95pct_interval": [-0.00621174657016277, 0.0035318053790593194],
+  "conclusion": "No clear winner; both models are approximately random on leakage-safe booking-time features."
+}
