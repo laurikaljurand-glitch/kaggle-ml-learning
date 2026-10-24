@@ -1,0 +1,36 @@
+name: Ride-hailing conversion benchmark
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ridehail-conversion/**"
+      - ".github/workflows/ridehail-conversion.yml"
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install dependencies
+        run: pip install -r ridehail-conversion/requirements.txt
+      - name: Train and compare both models
+        run: python ridehail-conversion/compare_models.py
+      - name: Show benchmark report
+        if: always()
+        run: |
+          if [ -f ridehail-conversion/outputs/REPORT.md ]; then
+            cat ridehail-conversion/outputs/REPORT.md
+          fi
+      - name: Upload model outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ridehail-conversion-results
+          path: ridehail-conversion/outputs/
